@@ -1,0 +1,21 @@
+.SongContainer {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #BDBDBD;
+    max-height: 100px;
+    margin: 5px 0px;
+}
+
+.song-details {
+    padding: 10px;
+    text-align: left
+}
+
+.track-name {
+    margin: 5px 5px;
+}
+
+.track-details {
+    margin: 5px 0px;
+    font-size: 12px;
+}

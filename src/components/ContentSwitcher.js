@@ -2,6 +2,7 @@ import React, { Component} from 'react';
 import Axios from 'axios';
 
 import Search from './contentswitcher/Search.js';
+import SearchResults from './contentswitcher/SearchResults.js';
 import Lyrics from './contentswitcher/Lyrics.js';
 import Credits from './contentswitcher/Credits.js';
 import Recent from './contentswitcher/Recent.js';
@@ -43,7 +44,8 @@ class ContentSwitcher extends Component {
                 And it burns, burns, burns,
                 The ring of fire, the ring of fire.
                 The ring of fire, the ring of fire
-            `
+            `,
+            searchResults: []
         };
     }
 
@@ -51,8 +53,9 @@ class ContentSwitcher extends Component {
         console.log('queryObj :', queryObj);
         // const API_KEY = '98ce6f6186ff364dbeab9b47c26621c4';
         // const apiAddress = `http://api.musixmatch.com/ws/1.1/track.search?q_artist=${queryObj.artist}&q_track=${queryObj.track}&q_lyrics=${queryObj.lyrics}&page_size=3&page=1&s_track_rating=des`;
-        const apiAddress = `https://musixmatchcom-musixmatch.p.mashape.com/wsr/1.1/track.search?page=1&page_size=5&q_artist=${queryObj.artistQuery}&q_track=${queryObj.nameQuery}&q_lyrics=${queryObj.lyricQuery}`;
-        console.log(apiAddress);
+
+        const apiAddress = `https://musixmatchcom-musixmatch.p.mashape.com/wsr/1.1/track.search?page=1&page_size=10&q_artist=${queryObj.artistQuery}&q_track=${queryObj.nameQuery}&q_lyrics=${queryObj.lyricQuery}`;
+
         const requestConfig = {
             method: 'get',
             headers: {
@@ -60,14 +63,19 @@ class ContentSwitcher extends Component {
                 'Accept': 'application/json'
             }
         };
+
         Axios.get(apiAddress, requestConfig)
-            .then(res => console.log(res));
+            .then(res => {
+                console.log('Received response from API: ', res);
+                this.setState({searchResults: res.data, mode: 'searchresults'});
+        });
 
     }
 
     switchContent() {
         const modeLookup = {
             search: <Search getLyrics={(queryObj) => this.getLyrics(queryObj)}/>,
+            searchresults: <SearchResults data={this.state.searchResults} />,
             lyrics: <Lyrics artist={this.state.activeArtist} song={this.state.activeSong} lyrics={this.state.activeLyrics} />,
             credits: <Credits />,
             recent: <Recent />

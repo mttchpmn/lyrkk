@@ -1,10 +1,18 @@
 import React from 'react';
+import CardContainer from '../CardContainer';
+import SongContainer from './SongContainer';
+import './SearchResults.module.css';
 
-const SearchResults = props => {
+const SearchResults = ({data}) => {
     return(
-        <div className="SearchResults">
-            
-        </div>
+        <CardContainer className="SearchResults">
+            <h2>Search Results</h2>
+            {data.map(item => {
+                return (
+                <SongContainer data={item} />
+                );
+            })}
+        </CardContainer>
     );
 }
 

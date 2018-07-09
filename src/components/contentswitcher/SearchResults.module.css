@@ -1,0 +1,4 @@
+.SearchResults {
+    overflow: scroll;
+    max-height: 70vh;
+}
