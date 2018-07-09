@@ -1,0 +1,28 @@
+@import '../../theme.css';
+
+form {
+    height: 100%;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    /* align-items: flex-end */
+}
+
+.search-input input {
+    text-align: center;
+    width: 90%;
+    min-height: 50px;
+    border-style: none;
+    background-color: #eee;
+}
+
+.search-form button {
+    min-height: 60px;
+    border-radius: 30px;
+    border-style: none;
+    background-color: var(--secondary);
+    box-shadow: 0px 5px 5px rgba(0,0,0,0.1);
+}

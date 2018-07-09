@@ -1,0 +1,8 @@
+@import '../theme.css';
+
+.HeaderBar {
+    text-align: center;
+    background-color: var(--primary);
+    color: #fff;
+    padding: 5px 5px;
+}
