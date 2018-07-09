@@ -8,3 +8,7 @@
     text-align: center;
     height: 70vh;
 }
+
+.scrollable {
+    overflow: scroll;
+}

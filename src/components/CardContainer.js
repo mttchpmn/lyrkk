@@ -1,10 +1,11 @@
 import React from 'react';
 import './CardContainer.css';
 
-const CardContainer = props => {
+const CardContainer = ({scrollable, children}) => {
+    const scrollClass = scrollable ? 'scrollable' : '';
     return(
-        <div className="CardContainer">
-            {props.children}
+        <div className={`CardContainer ${scrollClass}`}>
+            {children}
         </div>
     );
 }

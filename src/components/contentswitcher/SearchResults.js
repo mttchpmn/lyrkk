@@ -5,7 +5,7 @@ import './SearchResults.module.css';
 
 const SearchResults = ({data}) => {
     return(
-        <CardContainer className="SearchResults">
+        <CardContainer scrollable={true} className="SearchResults">
             <h2>Search Results</h2>
             {data.map(item => {
                 return (
