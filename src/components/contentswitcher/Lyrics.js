@@ -1,10 +1,13 @@
 import React from 'react';
+import CardContainer from '../CardContainer';
 
-const Lyrics = props => {
+const Lyrics = ({artist, song, lyrics}) => {
     return(
-        <div className="Lyrics">
-            
-        </div>
+        <CardContainer className="Lyrics">
+            <h2>{song}</h2>
+            <h3>{artist}</h3>
+            <p>{lyrics}</p>
+        </CardContainer>
     );
 }
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import HeaderBar from './components/HeaderBar';
-import AppBar from './components/AppBar';
+// import AppBar from './components/AppBar';
 import ContentSwitcher from './components/ContentSwitcher';
 
 class App extends Component {
@@ -11,7 +11,7 @@ class App extends Component {
       <div className="App">
         <HeaderBar />
         <ContentSwitcher />
-        <AppBar />
+        {/* <AppBar /> */}
       </div>
     );
   }

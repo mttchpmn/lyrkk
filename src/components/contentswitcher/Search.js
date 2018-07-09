@@ -10,6 +10,7 @@ class Search extends React.Component {
             nameQuery: '',
             lyricQuery: '',
         };
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleInputUpdate(type, term) {
@@ -26,7 +27,7 @@ class Search extends React.Component {
         return(
             <CardContainer className="Search">
                 Enter some text in some all or of the inputs and go for gold!
-                <form className="search-form">
+                <form onSubmit={this.handleSubmit} className="search-form">
                     <div className="search-artist search-input">
                         <input value={this.state.artistQuery} onChange={(e) => this.handleInputUpdate('artistQuery', e.target.value) } placeholder="Artist Name" id="artist"/>
                     </div>
@@ -36,7 +37,7 @@ class Search extends React.Component {
                     <div className="search-lyrics search-input">
                         <input value={this.state.lyricQuery} onChange={(e) => this.handleInputUpdate('lyricQuery', e.target.value) } placeholder="Partial lyrics" id="lyrics"/>
                     </div>
-                    <button type="submit">Find Lyrics!</button>
+                    <button type="submit" on>Find Lyrics!</button>
                 </form>
             </CardContainer>
         );
