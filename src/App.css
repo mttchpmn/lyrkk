@@ -2,6 +2,15 @@ body {
   background-color: #eee;
 }
 
+.App {
+  position:fixed !important;
+  position:absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+}
+
 @media screen and (min-width: 600px) {
   .App {
     max-width: 500px;
