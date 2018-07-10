@@ -1,5 +1,9 @@
 @import '../../theme.css';
 
+.header2 {
+    margin: 0;
+}
+
 form {
     height: 100%;
 }

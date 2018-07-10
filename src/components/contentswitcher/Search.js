@@ -26,7 +26,7 @@ class Search extends React.Component {
     render() {
         return(
             <CardContainer className="Search">
-                Enter some text in some all or of the inputs and go for gold!
+                <h2 className="header2">Search for a Track</h2>
                 <form onSubmit={this.handleSubmit} className="search-form">
                     <div className="search-artist search-input">
                         <input value={this.state.artistQuery} onChange={(e) => this.handleInputUpdate('artistQuery', e.target.value) } placeholder="Artist Name" id="artist"/>

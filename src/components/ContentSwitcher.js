@@ -72,6 +72,10 @@ class ContentSwitcher extends Component {
 
     }
 
+    switchMode(mode) {
+        this.setState({mode});
+    }
+
     switchContent() {
         const modeLookup = {
             search: <Search getLyrics={(queryObj) => this.getLyrics(queryObj)}/>,
@@ -87,7 +91,7 @@ class ContentSwitcher extends Component {
         return(
             <div className="ContentSwitcher">
                 {this.switchContent()}
-            <AppBar />
+            <AppBar modeSelector={(m) => this.switchMode(m)} />
             </div>
         );
     }

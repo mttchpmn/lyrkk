@@ -10,3 +10,16 @@
     background-color: var(--primary);
     height: 50px;
 }
+
+.nav-button {
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}
+
+.nav-button:hover {
+    background-color: #512DA8;
+}
