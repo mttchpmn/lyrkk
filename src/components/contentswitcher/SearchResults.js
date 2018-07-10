@@ -3,7 +3,7 @@ import CardContainer from '../CardContainer';
 import SongContainer from './SongContainer';
 import './SearchResults.module.css';
 
-const SearchResults = ({data}) => {
+const SearchResults = ({data, handleSelect}) => {
     if (!data.length) {
         return(
             <CardContainer className="no-results">
@@ -20,7 +20,7 @@ const SearchResults = ({data}) => {
             <h2>Search Results</h2>
             {data.map(item => {
                 return (
-                <SongContainer data={item} />
+                <SongContainer data={item} handleSelect={(data) => handleSelect(data)} />
                 );
             })}
         </CardContainer>

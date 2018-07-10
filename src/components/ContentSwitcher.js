@@ -13,38 +13,9 @@ class ContentSwitcher extends Component {
         super(props);
         this.state = {
             mode: 'search',
-            activeArtist: 'Johnny Cash',
-            activeSong: 'Burning Ring of Fire',
-            activeLyrics: `
-                Love is a burning thing
-                And it makes a fiery ring.
-                Bound by wild desire
-                I fell into a ring of fire.
-
-                I fell into a burning ring of fire,
-                I went down, down, down and the flames went higher
-                And it burns, burns, burns,
-                The ring of fire, the ring of fire.
-
-                I fell into a burning ring of fire,
-                I went down, down, down and the flames went higher
-                And it burns, burns, burns,
-                The ring of fire, the ring of fire.
-
-                The taste of love is sweet
-                When hearts like ours meet.
-                I fell for you like a child,
-                Oh, but the fire went wild.
-
-                I fell into a burning ring of fire,
-                I went down, down, down and the flames went higher
-                And it burns, burns, burns,
-                The ring of fire, the ring of fire.
-
-                And it burns, burns, burns,
-                The ring of fire, the ring of fire.
-                The ring of fire, the ring of fire
-            `,
+            activeArtist: '',
+            activeSong: '',
+            activeLyrics: '',
             searchResults: []
         };
     }
@@ -72,6 +43,32 @@ class ContentSwitcher extends Component {
 
     }
 
+    getTrack(trackData) {
+        console.log('getTrack() called');
+        console.log('trackData :', trackData);
+
+        this.setState({
+            activeArtist: trackData.artist_name,
+            activeSong: trackData.track_name
+        });
+
+        const apiAddress = `https://musixmatchcom-musixmatch.p.mashape.com/wsr/1.1/track.lyrics.get?track_id=${trackData.track_id}`;
+
+        const requestConfig = {
+            method: 'get',
+            headers: {
+                'X-Mashape-Key': 'UVhQEbOiH0msh7mSwD7u0LOK8BFMp11CpYZjsn6Kcfgn9M5Pgo',
+                'Accept': 'application/json'
+            }
+        };
+
+        Axios.get(apiAddress, requestConfig)
+            .then(res => {
+                console.log('Received response from API: ', res);
+                this.setState({ mode: 'lyrics', activeLyrics: res.data.lyrics_body.replace('↵', '\n') });
+            });
+    }
+
     switchMode(mode) {
         this.setState({mode});
     }
@@ -79,7 +76,7 @@ class ContentSwitcher extends Component {
     switchContent() {
         const modeLookup = {
             search: <Search getLyrics={(queryObj) => this.getLyrics(queryObj)}/>,
-            searchresults: <SearchResults data={this.state.searchResults} />,
+            searchresults: <SearchResults data={this.state.searchResults} handleSelect={(data) => this.getTrack(data)}/>,
             lyrics: <Lyrics artist={this.state.activeArtist} song={this.state.activeSong} lyrics={this.state.activeLyrics} />,
             credits: <Credits />,
             recent: <Recent />
