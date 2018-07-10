@@ -13,11 +13,11 @@
 
 .nav-button {
     height: 50px;
-    width: 50px;
+    width: 90%;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 50%;
+    border-radius: 5px;
 }
 
 .nav-button:hover {
