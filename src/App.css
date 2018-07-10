@@ -2,9 +2,11 @@ body {
   background-color: #eee;
 }
 
-.App {
-  max-width: 500px;
-  margin: 0 auto;
-  margin-top: 30px;
-  border: 1px solid #DBDBDB;
+@media screen and (min-width: 600px) {
+  .App {
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 30px;
+    border: 1px solid #DBDBDB;
+  }
 }

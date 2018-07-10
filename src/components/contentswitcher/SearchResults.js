@@ -4,6 +4,17 @@ import SongContainer from './SongContainer';
 import './SearchResults.module.css';
 
 const SearchResults = ({data}) => {
+    if (!data.length) {
+        return(
+            <CardContainer className="no-results">
+                <div className="nothing-found">
+                    <i class="far fa-frown" />
+                    <h3>There's nothing here!</h3>
+                    <p>Hit the search button and find some lyrics.</p>
+                </div>
+                </CardContainer>
+        );
+    }
     return(
         <CardContainer scrollable={true} className="SearchResults">
             <h2>Search Results</h2>

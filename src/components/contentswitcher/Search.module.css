@@ -19,6 +19,7 @@ form {
     text-align: center;
     width: 90%;
     min-height: 50px;
+    border-radius: 3px;
     border-style: none;
     background-color: #eee;
 }

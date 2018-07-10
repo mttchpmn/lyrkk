@@ -6,7 +6,7 @@ const AppBar = ({modeSelector}) => {
         <div className="AppBar">
             <div onClick={() => modeSelector('searchresults')} className="recent nav-button"><i className="fas fa-list" /></div>
             <div onClick={() => modeSelector('search')} className="search nav-button"><i className="fas fa-search" /></div>
-            <div onClick={() => modeSelector('info')} className="info nav-button"><i className="fas fa-info" /></div>
+            <div onClick={() => modeSelector('lyrics')} className="info nav-button"><i className="far fa-file-alt" /></div>
         </div>
     );
 }

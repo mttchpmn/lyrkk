@@ -1,7 +1,10 @@
 .SongContainer {
-    display: flex;
-    justify-content: space-between;
+    /* display: flex;
+    justify-content: space-between; */
+    display: grid;
+    grid-template-columns: 100px 1fr;
     border: 1px solid #BDBDBD;
+    border-radius: 3px;
     max-height: 100px;
     margin: 5px 0px;
 }
@@ -12,10 +15,14 @@
 }
 
 .track-name {
-    margin: 5px 5px;
+    margin: 5px 5px 15px 5px;
 }
 
 .track-details {
     margin: 5px 0px;
     font-size: 12px;
+}
+
+.song-icon {
+    margin-right: 5px;
 }
