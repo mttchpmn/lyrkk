@@ -6,7 +6,7 @@ A simple pocket companion for finding the lyrics to your favorite songs.
 
 LYRKK is designed to be as simple as possible, so you can focus on what you're looking for; the lyrics;  LYRKK sources all of its lyrics information from the [MusixMatch API](http://developer.musixmatch.com)
 
-![Screenshots]('./screens.jpg)
+![Screenshots](screens.jpg)
 
 LYRKK is built using React, and bootstrapped using Create-React-App.  All styling and design is vanilla CSS.
 
