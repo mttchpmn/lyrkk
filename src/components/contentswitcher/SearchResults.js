@@ -1,18 +1,13 @@
 import React from 'react';
 import CardContainer from '../CardContainer';
 import SongContainer from './SongContainer';
+import NoContent from './NoContent';
 import './SearchResults.module.css';
 
 const SearchResults = ({data, handleSelect}) => {
     if (!data.length) {
         return(
-            <CardContainer className="no-results">
-                <div className="nothing-found">
-                    <i class="far fa-frown" />
-                    <h3>There's nothing here!</h3>
-                    <p>Hit the search button and find some lyrics.</p>
-                </div>
-                </CardContainer>
+            <NoContent />
         );
     }
     return(

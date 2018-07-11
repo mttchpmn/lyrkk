@@ -29,13 +29,13 @@ class Search extends React.Component {
                 <h2 className="header2">Search for a Track</h2>
                 <form onSubmit={this.handleSubmit} className="search-form">
                     <div className="search-artist search-input">
-                        <input value={this.state.artistQuery} onChange={(e) => this.handleInputUpdate('artistQuery', e.target.value) } placeholder="Artist Name" id="artist"/>
+                        <input autocomplete="off" value={this.state.artistQuery} onChange={(e) => this.handleInputUpdate('artistQuery', e.target.value) } placeholder="Artist Name" id="artist"/>
                     </div>
                     <div className="search-song search-input">
-                        <input value={this.state.nameQuery} onChange={(e) => this.handleInputUpdate('nameQuery', e.target.value) } placeholder="Song Name" id="song"/>
+                        <input autocomplete="off" value={this.state.nameQuery} onChange={(e) => this.handleInputUpdate('nameQuery', e.target.value) } placeholder="Song Name" id="song"/>
                     </div>
                     <div className="search-lyrics search-input">
-                        <input value={this.state.lyricQuery} onChange={(e) => this.handleInputUpdate('lyricQuery', e.target.value) } placeholder="Partial lyrics" id="lyrics"/>
+                        <input autocomplete="off" value={this.state.lyricQuery} onChange={(e) => this.handleInputUpdate('lyricQuery', e.target.value) } placeholder="Partial lyrics" id="lyrics"/>
                     </div>
                     <button type="submit" on>Find Lyrics!</button>
                 </form>

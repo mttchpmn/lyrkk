@@ -15,7 +15,6 @@ body {
   .App {
     max-width: 500px;
     margin: 0 auto;
-    margin-top: 30px;
     border: 1px solid #DBDBDB;
   }
 }

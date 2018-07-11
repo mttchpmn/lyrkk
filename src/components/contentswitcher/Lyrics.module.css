@@ -1,0 +1,10 @@
+.Lyrics {
+    line-height: 3.5;
+    padding: 10px;
+    white-space: pre-wrap;
+}
+
+.copyright {
+    font-size: 12px;
+    vertical-align: bottom;
+}

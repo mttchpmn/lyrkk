@@ -7,23 +7,24 @@ import Lyrics from './contentswitcher/Lyrics.js';
 import Credits from './contentswitcher/Credits.js';
 import Recent from './contentswitcher/Recent.js';
 import AppBar from './contentswitcher/AppBar.js';
+import LoadScreen from './contentswitcher/LoadScreen.js';
 
 class ContentSwitcher extends Component {
     constructor(props) {
         super(props);
         this.state = {
             mode: 'search',
-            activeArtist: '',
-            activeSong: '',
-            activeLyrics: '',
+            activeArtist: null,
+            activeSong: null,
+            activeLyrics: null,
+            copyright: null,
             searchResults: []
         };
     }
 
     getLyrics(queryObj) {
         console.log('queryObj :', queryObj);
-        // const API_KEY = '98ce6f6186ff364dbeab9b47c26621c4';
-        // const apiAddress = `http://api.musixmatch.com/ws/1.1/track.search?q_artist=${queryObj.artist}&q_track=${queryObj.track}&q_lyrics=${queryObj.lyrics}&page_size=3&page=1&s_track_rating=des`;
+        this.setState({mode: 'loading'});
 
         const apiAddress = `https://musixmatchcom-musixmatch.p.mashape.com/wsr/1.1/track.search?page=1&page_size=10&q_artist=${queryObj.artistQuery}&q_track=${queryObj.nameQuery}&q_lyrics=${queryObj.lyricQuery}`;
 
@@ -48,6 +49,7 @@ class ContentSwitcher extends Component {
         console.log('trackData :', trackData);
 
         this.setState({
+            mode: 'loading',
             activeArtist: trackData.artist_name,
             activeSong: trackData.track_name
         });
@@ -65,7 +67,11 @@ class ContentSwitcher extends Component {
         Axios.get(apiAddress, requestConfig)
             .then(res => {
                 console.log('Received response from API: ', res);
-                this.setState({ mode: 'lyrics', activeLyrics: res.data.lyrics_body.replace('↵', '\n') });
+                this.setState({ 
+                    mode: 'lyrics', 
+                    activeLyrics: res.data.lyrics_body,
+                    copyright: res.data.lyrics_copyright
+                 });
             });
     }
 
@@ -77,9 +83,10 @@ class ContentSwitcher extends Component {
         const modeLookup = {
             search: <Search getLyrics={(queryObj) => this.getLyrics(queryObj)}/>,
             searchresults: <SearchResults data={this.state.searchResults} handleSelect={(data) => this.getTrack(data)}/>,
-            lyrics: <Lyrics artist={this.state.activeArtist} song={this.state.activeSong} lyrics={this.state.activeLyrics} />,
+            lyrics: <Lyrics artist={this.state.activeArtist} song={this.state.activeSong} lyrics={this.state.activeLyrics} copyright={this.state.copyright}/>,
             credits: <Credits />,
-            recent: <Recent />
+            recent: <Recent />,
+            loading: <LoadScreen />
         };
         return modeLookup[this.state.mode];
     }
